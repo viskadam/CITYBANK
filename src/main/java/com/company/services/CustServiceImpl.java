@@ -52,8 +52,8 @@ import com.company.repository.acctRepository;
 			Set roles = new HashSet<BankRole>();
 			roles.add(roleRepository.findByName(role.toString()));
 
-			cust.setRoles(roles);
-			acct.setAccountnumber("12345"+ (long)Math.random()*20);
+			cust.setBankRoles(roles);
+			acct.setAccountnumber("12345"+ (long)Math.random()*2000000);
 			acct.setBalance(5000);
 			acctrepo.save(acct);
 			custRepository.save(cust);

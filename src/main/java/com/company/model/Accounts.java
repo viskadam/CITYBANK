@@ -10,80 +10,65 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name = "accounts")
+@Table(name = "Accounts")
+
 public class Accounts implements Serializable {
-	
 
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long aid;
-	@Column(length=25)
-	private String accountnumber;
-	@Column(name="balance",precision=(2))
-	private double balance;
-	
-	@ManyToOne
-	private Customer cust;
+@Id
+@GeneratedValue(strategy=GenerationType.IDENTITY)
+private Long aid;
+@Column(length=25)
+private String accountnumber;
+@Column(name="balance",precision=(2))
+private double balance;
 
-	public Accounts() {
-		 
-	}
-	
-	
-	
-	
-	
-	
-	public Customer getCust() {
-		return cust;
-	}
+public Accounts() {
+}
+
+@OneToMany(cascade=CascadeType.ALL)
+@JoinColumn(name="Acc_id",referencedColumnName="aid")
+private Set<Customer> customer;
+
+public Long getAid() {
+	return aid;
+}
+
+public void setAid(Long aid) {
+	this.aid = aid;
+}
+
+public String getAccountnumber() {
+	return accountnumber;
+}
+
+public void setAccountnumber(String accountnumber) {
+	this.accountnumber = accountnumber;
+}
+
+public double getBalance() {
+	return balance;
+}
+
+public void setBalance(double balance) {
+	this.balance = balance;
+}
+
+public Set<Customer> getCustomer() {
+	return customer;
+}
+
+public void setCustomer(Set<Customer> customer) {
+	this.customer = customer;
+}
 
 
 
 
-
-
-	public void setCust(Customer cust) {
-		this.cust = cust;
-	}
-
-
-
-
-
-
-	public String getAccountnumber() {
-		return this.accountnumber ;
-	}
-	@Column(length=25)
-	public void setAccountnumber(String accountnumber) {
-		this.accountnumber = accountnumber;
-	}
-
-	public Long getAid() {
-		return this.aid;
-	}
-
-	public void setAid(Long aid) {
-		this.aid = aid;
-	}
-
-	public double getBalance() {
-		return this.balance;
-	}
-	@Column(length=25)
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
-	
-	
 }

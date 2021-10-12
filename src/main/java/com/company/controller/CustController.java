@@ -1,7 +1,10 @@
 package com.company.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,31 +12,38 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.company.Validator.UserValidator;
 import com.company.constants.Roles;
+
 import com.company.model.Accounts;
 import com.company.model.Customer;
+import com.company.repository.acctRepository;
 import com.company.services.CustService;
 import com.company.services.Notification;
 import com.company.services.SecurityService;
 
 @Controller
+@SessionAttributes("userForm")
 public class CustController {
   
 	@Autowired
 	private CustService custService;
 	
+	@Autowired
+	private acctRepository repo;
+	
 	
 	@Autowired
     private SecurityService securityService;
 	
-	@Autowired
-	private UserValidator userValidator;
+	
 	
 	
 	@Autowired
@@ -41,22 +51,23 @@ public class CustController {
 	
     @GetMapping("/create")
     public String registration(Model model) {
-        model.addAttribute("userForm", new Customer());
-
+    	model.addAttribute("userForm", new Customer());
         return "create";
     }
     
     
     @PostMapping("/create")
-    public String registration(@ModelAttribute("userForm") Customer userForm, @RequestParam String username,@ModelAttribute("acct") Accounts acct,BindingResult bindingResult, Model model) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public String registration(HttpServletRequest request,@ModelAttribute("userForm") Customer userForm, @RequestParam String username,@ModelAttribute("acct") Accounts acct,BindingResult bindingResult, Model model) {
        
-    	userValidator.validate(userForm, bindingResult);
+    	
         if (bindingResult.hasErrors()) {
             return "create";
         }
 //       model.addAttribute("username",userForm.getUsername());
-        model.addAttribute("acct",acct.getAccountnumber());
+        //model.addAttribute("acct",acct);
         
+        //Customer cust = request.getSession().setAttribute("acct",acct);
         
         custService.save(userForm,Roles.ROLE_USER,acct);
         	//securityService.autoLogin(userForm.getUsername(), userForm.getPassword());

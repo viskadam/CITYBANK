@@ -17,7 +17,6 @@
 
 <h1>CUSTOMER DETAILS</h1>
 
-<c:set var="username" value="${username}" />
 <h2>Welcome ${pageContext.request.userPrincipal.name} </h2> 
 
 

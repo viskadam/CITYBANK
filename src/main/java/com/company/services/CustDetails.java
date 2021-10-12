@@ -35,7 +35,7 @@ public class CustDetails implements UserDetailsService {
 			throw new UsernameNotFoundException(username);
 
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-		for (BankRole bankRole : user.getRoles()) {
+		for (BankRole bankRole : user.getBankRoles()) {
 			grantedAuthorities.add(new SimpleGrantedAuthority(bankRole.getName()));
 		}
 

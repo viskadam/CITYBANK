@@ -22,6 +22,8 @@ public class AssignApplication extends SpringBootServletInitializer{
 	   }
 
 	public static void main(String[] args) {
+		
+		
 		SpringApplication.run(AssignApplication.class, args);
 	}
 

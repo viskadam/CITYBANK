@@ -1,6 +1,8 @@
 package com.company.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,124 +12,99 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
-
+@NamedQuery(name="Customer.findAll", query="SELECT m FROM Customer m")
 public class Customer implements Serializable{
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
-	
-	@Column(name = "name")
-	private String name;
-	
-	 @Column(name = "mobile")
-	private String mobile;
-	 
-	 @Column(name = "email")
-	private String email;
-	 
-	 @Column(name = "address")
-	private String address;
-	
-	
-	 
-	 @Column(name = "username")
-	private String username;
+@Id
+@GeneratedValue(strategy = GenerationType.SEQUENCE)
+@Column(name="id")
+private Long id;
+@Column(name = "name",length=25)
+private String name;
+@Column(name = "mobile",length=25)
+private String mobile;
+@Column(name = "email",length=25)
+private String email;
+@Column(name = "address",length=25)
+private String address;
+@Column(name = "username",length=25)
+private String username;
 
-	 @Column(name = "password")
-	private String password;
-	
-	 @OneToMany
-		private Set<BankRole> bankRoles;
+@Column(name = "password",length=25)
+private String password;
 
-	 @OneToMany(mappedBy = "aid" ,cascade = CascadeType.ALL)
+@OneToMany
+private Set<BankRole> bankRoles;
 
-		private Set<Accounts> acct;
-	
-	
+public Long getId() {
+	return id;
+}
 
-//	@Column(name="document", length = 64)
-//	    private String photos;
-		
-	
+public void setId(Long id) {
+	this.id = id;
+}
 
-	public String getName() {
-		return name;
-	}
+public String getName() {
+	return name;
+}
 
-	public Set<Accounts> getAcct() {
-		return acct;
-	}
+public void setName(String name) {
+	this.name = name;
+}
 
-	public void setAcct(Set<Accounts> acct) {
-		this.acct = acct;
-	}
+public String getMobile() {
+	return mobile;
+}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+public void setMobile(String mobile) {
+	this.mobile = mobile;
+}
 
-	public String getMobile() {
-		return mobile;
-	}
+public String getEmail() {
+	return email;
+}
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
+public void setEmail(String email) {
+	this.email = email;
+}
 
-	public String getEmail() {
-		return email;
-	}
+public String getAddress() {
+	return address;
+}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+public void setAddress(String address) {
+	this.address = address;
+}
 
-	public String getAddress() {
-		return address;
-	}
+public String getUsername() {
+	return username;
+}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+public void setUsername(String username) {
+	this.username = username;
+}
 
-	
+public String getPassword() {
+	return password;
+}
 
-	public Long getId() {
-		return id;
-	}
+public void setPassword(String password) {
+	this.password = password;
+}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+public Set<BankRole> getBankRoles() {
+	return bankRoles;
+}
 
-	public String getUsername() {
-		return username;
-	}
+public void setBankRoles(Set<BankRole> bankRoles) {
+	this.bankRoles = bankRoles;
+}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Set<BankRole> getRoles() {
-		return bankRoles;
-	}
-
-	public void setRoles(Set<BankRole> bankRoles) {
-		this.bankRoles = bankRoles;
-	}
 
 
 }
