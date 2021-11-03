@@ -1,0 +1,10 @@
+<nav role="navigation" class="navbar navbar-default">
+    <div class="">
+        <a class="navbar-brand">City Bank</a>
+    </div>
+    <form id="logoutForm" method="POST" action="${contextPath}/logout">
+        <input type="hidden" name="${_csrf.parameterName}"
+            value="${_csrf.token}" />
+    </form>
+    
+</nav>
