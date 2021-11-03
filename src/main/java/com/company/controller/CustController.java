@@ -1,18 +1,16 @@
 package com.company.controller;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
-<<<<<<< HEAD
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-=======
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,15 +18,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-=======
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,13 +36,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.company.constants.Roles;
 import com.company.model.Accounts;
 import com.company.model.Customer;
-<<<<<<< HEAD
+
 import com.company.model.Kyc;
 import com.company.repository.CustRepository;
 import com.company.repository.acctRepository;
-=======
+
 import com.company.repository.CustRepository;
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
 import com.company.services.CustService;
 import com.company.services.MailService;
 import com.company.services.Notification_cust;
@@ -66,26 +64,25 @@ public class CustController {
 	
 	@Autowired
 	private MailService notifi;
-	
-<<<<<<< HEAD
+
 	
 	@Autowired
 	acctRepository acctRepo;
 	
-=======
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
+
 	@Autowired
     private SecurityService securityService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-<<<<<<< HEAD
+
 	
 	@Autowired
 	private JavaMailSender jms;
-=======
+
 		
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
 	
 	@Autowired
 	private Notification_cust notify_cust;
@@ -104,11 +101,11 @@ public class CustController {
     }
    
     @PostMapping("/create")
-<<<<<<< HEAD
+
     public String registration(@ModelAttribute("userForm") Customer userForm, @ModelAttribute("acct") Accounts acct,Kyc k,BindingResult bindingResult, Model model,RedirectAttributes redirectAtt) {
-=======
-    public String registration(@ModelAttribute("userForm") Customer userForm, @ModelAttribute("acct") Accounts acct,BindingResult bindingResult, Model model,RedirectAttributes redirectAtt) {
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
+  
+
        
 
     	//ModelAndView mv = new ModelAndView("customerdetails.jsp");
@@ -122,20 +119,19 @@ public class CustController {
             return "create";
         }
         
-<<<<<<< HEAD
+
       
-=======
+
         System.out.println(userForm.getName());
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
 //        model.addAttribute("username",userForm.getUsername());
 //        model.addAttribute("acct",acct.getAccountnumber());
         
         
-<<<<<<< HEAD
+
         custService.save(userForm,Roles.ROLE_USER,acct,k);
-=======
-        custService.save(userForm,Roles.ROLE_USER,acct);
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
+       
         	//securityService.autoLogin(userForm.getUsername(), userForm.getPassword());
        
         //sending notification
@@ -255,16 +251,10 @@ public class CustController {
     
     
     @PostMapping("/admin")
-<<<<<<< HEAD
-   	public String admin(String username,String password,HttpServletRequest request) {
-    		if(username.equals("Devanshi") && password.equals("devu123")) {
-    			
-    			request.setAttribute("ks",custService.getKyc());
-=======
    	public String admin(String username,String password,HttpServletRequest request,@ModelAttribute("cust") Customer cust) {
     		if(username.equals("Devanshi") && password.equals("devu123")) {
     			request.setAttribute("users",custService.getCust());
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
     		
 //    			Customer user = custRepository.findByEmail(cust.getEmail());
 //    	    	System.out.println(user);
@@ -283,7 +273,7 @@ public class CustController {
    	}
     
     @GetMapping("/accept")
-<<<<<<< HEAD
+
 	public String sendmail(@RequestParam Long id,@RequestParam String accnum,HttpServletRequest request,
 			 ModelMap model) {
 		String mail = getUserEmail();
@@ -355,19 +345,8 @@ public class CustController {
 //    	
 //    	custService.deleterec(id);
 //    	return "redirect:/admin";
-=======
-	public String sendmail(@RequestParam(required=false,name="email") String email, ModelMap model,Customer cust) {
-    	Customer user = custRepository.findByEmail(cust.getEmail());
-    	
-    	  
-		try {
-			notifi.sendEmail(user);
-		} catch (MailException mailException) {
-			System.out.println(mailException);
-		}
-		
-		return "success";
-	}
+
+	
 
     
 //    @PostMapping("/accept")
@@ -382,13 +361,13 @@ public class CustController {
 //			System.out.println(mailException);
 //		}
 //		return "Mail sent successfully";
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
 //    }
 
     
     @GetMapping("/confirm")
    	public String confirm(@RequestParam(required=false,name="email") String email, ModelMap model,Customer cust) {
-<<<<<<< HEAD
+
        	String mail = getUserEmail();
        System.out.println(mail);
        	  
@@ -403,25 +382,24 @@ public class CustController {
    			email1.setText("thanks for cooperating");
    			jms.send(email1);
 
-=======
-       	Customer user = custRepository.findByEmail(cust.getEmail());
-       	
+
+      
        	  
-   		try {
+   	
    			notify_cust.sendEmail(user);
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
-   		} catch (MailException mailException) {
+   		}
+   		catch (MailException mailException) {
    			System.out.println(mailException);
    		}
    		
    		return "success";
    	}
     
-<<<<<<< HEAD
+
     private String getUserEmail() {
-=======
-    private String getUserEmail(ModelMap model) {
->>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+
+   
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails) {
