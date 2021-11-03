@@ -18,6 +18,7 @@ import javax.persistence.Table;
 public class Kyc implements Serializable {
 	
 	@Id
+<<<<<<< HEAD
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ekyc;
 	
@@ -59,6 +60,43 @@ public class Kyc implements Serializable {
 	
 
 	
+=======
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private String ekyc;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="aid", referencedColumnName="aid")
+	private Accounts acct;
+	
+	@Column(name="status")
+	private int status;
+	
+
+
+	public String getEkyc() {
+		return ekyc;
+	}
+
+	public void setEkyc(String ekyc) {
+		this.ekyc = ekyc;
+	}
+
+	public Accounts getAcct() {
+		return acct;
+	}
+
+	public void setAcct(Accounts acct) {
+		this.acct = acct;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 
 
 }

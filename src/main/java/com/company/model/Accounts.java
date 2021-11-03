@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+<<<<<<< HEAD
 @Entity
 @Table(name = "Accounts")
 @NamedQuery(name = "Accounts.findAll", query = "SELECT a FROM Accounts a")
@@ -54,6 +55,54 @@ public class Accounts implements Serializable {
 	@Column(length = 25)
 	public void setAccountnumber(String accountnumber) {
 		this.accountnumber = accountnumber + (long) (Math.round(Math.random() * 25000));
+=======
+
+
+@Entity
+@Table(name = "Accounts")
+@NamedQuery(name="Accounts.findAll", query="SELECT a FROM Accounts a")
+public class Accounts implements Serializable {
+	
+
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long aid;
+	@Column(length=25)
+	private String accountnumber;
+	@Column(name="balance",precision=(2))
+	private double balance;
+	
+	
+	
+
+	public Accounts() {
+		 
+	}
+	
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="Acc_id",referencedColumnName="aid")
+	private Set<Customer> customer;
+	
+	
+	public Set<Customer> getCustomer() {
+		return customer;
+	}
+	
+	
+	public void setCustomer(Set<Customer> customer) {
+		this.customer = customer;
+	}
+	
+	
+	public String getAccountnumber() {
+		return this.accountnumber ;
+	}
+	@Column(length=25)
+	public void setAccountnumber(String accountnumber) {
+		this.accountnumber = accountnumber+(long)(Math.round(Math.random()*25000));
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 	}
 
 	public Long getAid() {
@@ -67,10 +116,19 @@ public class Accounts implements Serializable {
 	public double getBalance() {
 		return this.balance;
 	}
+<<<<<<< HEAD
 
 	@Column(length = 25)
+=======
+	@Column(length=25)
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 }

@@ -143,7 +143,16 @@
                 </div>
             </spring:bind>
             
+<<<<<<< HEAD
           
+=======
+            <spring:bind path="	confirmpassword">
+                <div class="form-group ${status.error ? 'has-error' : ''}">
+                    <form:input type="password" path="confirmpassword" class="form-control" placeholder="Password"></form:input>
+                    <form:errors path="password"> </form:errors>
+                </div>
+            </spring:bind>
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
             
               </div>
             

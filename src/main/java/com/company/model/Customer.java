@@ -19,6 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Customer")
 
+<<<<<<< HEAD
 @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
 public class Customer implements Serializable {
 
@@ -59,6 +60,37 @@ public class Customer implements Serializable {
 		this.accountNumber = accountNumber;
 	}
 
+=======
+@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
+public class Customer implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name = "name",length=25)
+	private String name;
+	
+	 @Column(name = "mobile",length=100)
+	private String mobile;
+	 
+	@Column(nullable = false, unique = true, length = 45)
+	private String email;
+	 
+	 @Column(name = "address",length=25)
+	private String address;
+	
+	
+	 
+	 @Column(name = "username",length=25)
+	private String username;
+
+	 @Column(name = "password",length=150)
+	private String password;
+	 
+	
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 	public Set<BankRole> getBankRoles() {
 		return bankRoles;
 	}
@@ -68,10 +100,17 @@ public class Customer implements Serializable {
 	}
 
 	@OneToMany
+<<<<<<< HEAD
 	private Set<BankRole> bankRoles;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ekyc", referencedColumnName = "ekyc")
+=======
+		private Set<BankRole> bankRoles;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="ekyc", referencedColumnName="ekyc")
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 	private Kyc kyc;
 
 	public Kyc getKyc() {
@@ -102,7 +141,11 @@ public class Customer implements Serializable {
 		return email;
 	}
 
+<<<<<<< HEAD
 	public void setEmail(String email) {
+=======
+	public void  setEmail(String email) {
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 		this.email = email;
 	}
 
@@ -114,6 +157,11 @@ public class Customer implements Serializable {
 		this.address = address;
 	}
 
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 	public Long getId() {
 		return id;
 	}
@@ -137,7 +185,10 @@ public class Customer implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 	public Set<BankRole> getRoles() {
 		return bankRoles;
 	}
@@ -151,5 +202,10 @@ public class Customer implements Serializable {
 		return "Customer [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", address="
 				+ address + ", username=" + username + ", bankRoles=" + bankRoles + "]";
 	}
+<<<<<<< HEAD
+=======
+	
+
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 
 }

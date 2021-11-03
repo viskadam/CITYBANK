@@ -18,7 +18,11 @@ Select File:
 <input type="file" name="image" accept="image/png"/>
 
 <a type="button" class="btn btn-success"
+<<<<<<< HEAD
         href="/confirm">confirm</a>
+=======
+        href="/confirm?id=${user.id}">confirm</a>
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
 </form>
 </body>
 </html>
