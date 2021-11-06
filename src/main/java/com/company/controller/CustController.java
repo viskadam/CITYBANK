@@ -1,12 +1,24 @@
 package com.company.controller;
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
+<<<<<<< HEAD
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+=======
+
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,10 +26,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+<<<<<<< HEAD
+=======
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,9 +50,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.company.constants.Roles;
 import com.company.model.Accounts;
 import com.company.model.Customer;
+<<<<<<< HEAD
 import com.company.model.Kyc;
 import com.company.repository.CustRepository;
 import com.company.repository.acctRepository;
+=======
+
+import com.company.model.Kyc;
+import com.company.repository.CustRepository;
+import com.company.repository.acctRepository;
+
+import com.company.repository.CustRepository;
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 import com.company.services.CustService;
 import com.company.services.MailService;
 import com.company.services.Notification_cust;
@@ -51,21 +84,43 @@ public class CustController {
 	
 	@Autowired
 	private MailService notifi;
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 	
 	@Autowired
 	acctRepository acctRepo;
 	
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 	@Autowired
     private SecurityService securityService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+<<<<<<< HEAD
 	
 	@Autowired
 	private JavaMailSender jms;
 	
 
+=======
+
+	
+	@Autowired
+	private JavaMailSender jms;
+
+		
+
+	
+	@Autowired
+	private Notification_cust notify_cust;
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 	
 	@Autowired
 	private Notification_reg notify_reg;
@@ -81,7 +136,15 @@ public class CustController {
     }
    
     @PostMapping("/create")
+<<<<<<< HEAD
     public String registration(@ModelAttribute("userForm") Customer userForm, @ModelAttribute("acct") Accounts acct,BindingResult bindingResult, Model model,RedirectAttributes redirectAtt) {
+=======
+
+    public String registration(@ModelAttribute("userForm") Customer userForm, @ModelAttribute("acct") Accounts acct,Kyc k,BindingResult bindingResult, Model model,RedirectAttributes redirectAtt) {
+
+  
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
        
 
     	//ModelAndView mv = new ModelAndView("customerdetails.jsp");
@@ -95,6 +158,7 @@ public class CustController {
             return "create";
         }
         
+<<<<<<< HEAD
        
         model.addAttribute("message", "Please Confirm and proceed to Login!!!");
         
@@ -127,6 +191,22 @@ public class CustController {
         
        custService.save(userForm,Roles.ROLE_USER,acct,k);
         	
+=======
+
+      
+
+        System.out.println(userForm.getName());
+
+//        model.addAttribute("username",userForm.getUsername());
+//        model.addAttribute("acct",acct.getAccountnumber());
+        
+        
+
+        custService.save(userForm,Roles.ROLE_USER,acct,k);
+
+       
+        	//securityService.autoLogin(userForm.getUsername(), userForm.getPassword());
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
        
         //sending notification
         
@@ -138,6 +218,7 @@ public class CustController {
         catch(MailException e) {
         	
         }
+<<<<<<< HEAD
         
       
        
@@ -145,6 +226,15 @@ public class CustController {
         model.addAttribute("message", "Your account has been created successfully");
         
         model.addAttribute("userForm", new Customer());
+=======
+        if(userForm!=null) {
+        	model.addAttribute("message", "Account is created successfully");
+        }
+        
+        else {
+        	model.addAttribute("message", "Login here");
+        }
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
         
         return "login";
     }
@@ -245,10 +335,17 @@ public class CustController {
     
     
     @PostMapping("/admin")
+<<<<<<< HEAD
    	public String admin(String username,String password,HttpServletRequest request) {
     		if(username.equals("Devanshi") && password.equals("devu123")) {
     			
     			request.setAttribute("ks",custService.getKyc());
+=======
+   	public String admin(String username,String password,HttpServletRequest request,@ModelAttribute("cust") Customer cust) {
+    		if(username.equals("Devanshi") && password.equals("devu123")) {
+    			request.setAttribute("users",custService.getCust());
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
     		
 //    			Customer user = custRepository.findByEmail(cust.getEmail());
 //    	    	System.out.println(user);
@@ -267,6 +364,10 @@ public class CustController {
    	}
     
     @GetMapping("/accept")
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 	public String sendmail(@RequestParam Long id,@RequestParam String accnum,HttpServletRequest request,
 			 ModelMap model) {
 		String mail = getUserEmail();
@@ -338,11 +439,35 @@ public class CustController {
 //    	
 //    	custService.deleterec(id);
 //    	return "redirect:/admin";
+<<<<<<< HEAD
+=======
+
+	
+
+    
+//    @PostMapping("/accept")
+//   	public String updatemail(@RequestParam(required=false,name="email") String email, ModelMap model,Customer cust) {
+//    	 
+//    	Customer user = custRepository.findByEmail(getUserEmail(model));
+//    	
+//  
+//		try {
+//			notifi.sendEmail(user);
+//		} catch (MailException mailException) {
+//			System.out.println(mailException);
+//		}
+//		return "Mail sent successfully";
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 //    }
 
     
     @GetMapping("/confirm")
    	public String confirm(@RequestParam(required=false,name="email") String email, ModelMap model,Customer cust) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
        	String mail = getUserEmail();
        System.out.println(mail);
        	  
@@ -357,14 +482,32 @@ public class CustController {
    			email1.setText("thanks for cooperating");
    			jms.send(email1);
 
+<<<<<<< HEAD
    		} catch (MailException mailException) {
+=======
+
+      
+       	  
+   	
+   			notify_cust.sendEmail(user);
+   		}
+   		catch (MailException mailException) {
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
    			System.out.println(mailException);
    		}
    		
    		return "success";
    	}
     
+<<<<<<< HEAD
     private String getUserEmail() {
+=======
+
+    private String getUserEmail() {
+
+   
+
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails) {

@@ -48,7 +48,15 @@ public class CustDetails implements UserDetailsService {
 
 	public UserDetails loadUserByEmail(String email) {
 		 try {
+<<<<<<< HEAD
 		        Customer user = custRepository.findByEmail(email).get(0);
+=======
+<<<<<<< HEAD
+		        Customer user = custRepository.findByEmail(email).get(0);
+=======
+		        Customer user = custRepository.findByEmail(email);
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 		        if (user == null) {
 		            throw new UsernameNotFoundException(
 		              "No user found with username: " + email);

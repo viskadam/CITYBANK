@@ -19,6 +19,10 @@
 	});
 </script>
 <style>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 
 
 * {
@@ -92,10 +96,22 @@ table {
 	width: 100%;
 }
 
+<<<<<<< HEAD
+=======
+=======
+table {
+	width: 100%;
+}
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 table#01, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 
 th, td {
 	padding: 15px;
@@ -109,11 +125,32 @@ table#t01 tr:nth-child(odd) {
 	background-color: #fff;
 }
 
+<<<<<<< HEAD
+=======
+=======
+th, td {
+	padding: 15px;
+}
+table#t01 tr:nth-child(even) {
+	background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+	background-color: #fff;
+}
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 table#t01 th {
 	background-color: black;
 	color: white;
 }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 table#t02 {
 	border: none !important;
 	border-collapse: collapse !important;
@@ -124,17 +161,39 @@ table#t02 {
 <body>
 	<table class="t02">
 		<tr>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 			<td align="left" style="font-size: xx-large;"><b>CUSTOMER
+					DETAILS</b></td>
+		</tr>
+		<tr>
+<<<<<<< HEAD
+			<td align="left" style="font-size: large;"><b>Welcome,
+					${pageContext.request.userPrincipal.name} !!</b></td>
+=======
+			<td align="left" style="font-size: large;"><b>Welcome, <c:out
+						value="${custName}"></c:out> !!
+			</b></td>
+=======
+			<td align="center" style="font-size: xx-large;"><b>CUSTOMER
 					DETAILS</b></td>
 		</tr>
 		<tr>
 			<td align="left" style="font-size: large;"><b>Welcome,
 					${pageContext.request.userPrincipal.name} !!</b></td>
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 		</tr>
 		<tr>
 			<td align="left"><b>Account Number :</b> <%=session.getAttribute("acctNum")%></td>
 		</tr>
 		<tr>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 			<td align="left"><c:choose>
 					<c:when test="${kyflag}">
 						<b>KYC Status :</b> KYC Pending
@@ -172,6 +231,18 @@ table#t02 {
 						<tr>
 			<td align="left"><b>Transaction History :</b> <a class="hidediv">Hide
 					transaction</a> <a class="showdiv">show transaction</a></td>
+<<<<<<< HEAD
+=======
+=======
+			<td align="left"><b>KYC Status :</b> KYC Pending
+				&nbsp;&nbsp;&nbsp;&nbsp;<a href="/kycupload"><b>Upload your KYC
+						documents here</b></a></td>
+		</tr>
+		<tr>
+			<td align="left"><b>Transaction History :</b> <a class="hidediv">Hide
+					transaction</a> &nbsp;&nbsp; <a class="showdiv">show transaction</a></td>
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 		</tr>
 
 		<tr>
@@ -226,6 +297,10 @@ table#t02 {
 				</div>
 			</td>
 		</tr>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 						
 						
 						
@@ -251,5 +326,11 @@ table#t02 {
           document.getElementById("popupForm").style.display = "none";
         }
       </script>
+<<<<<<< HEAD
+=======
+=======
+	</table>
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 </body>
 </html>

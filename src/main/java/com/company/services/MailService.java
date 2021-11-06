@@ -29,9 +29,21 @@ public class MailService {
 	
 		
 		SimpleMailMessage mail = new SimpleMailMessage();
+<<<<<<< HEAD
 		System.out.println(user.getEmail());
 		mail.setFrom("dev26134@gmail.com");
 		mail.setTo(user.getEmail());
+=======
+<<<<<<< HEAD
+		System.out.println(user.getEmail());
+		mail.setFrom("dev26134@gmail.com");
+		mail.setTo(user.getEmail());
+=======
+		//System.out.println(user.getEmail());
+		mail.setFrom("dev26134@gmail.com");
+		mail.setTo("devanshimadhani20@gmail.com");
+>>>>>>> cf52a57e93549a2e140afce91d59cb9506a98ad5
+>>>>>>> bf5f6ebd60eb9d505fc319bede77963f8ec568f6
 		System.out.println("hello2");
 		mail.setSubject("Kyc done");
 		mail.setText("ekyc no:2345");
